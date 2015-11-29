@@ -268,7 +268,7 @@ set_firewall() {
 }
 
 unset_firewall() {
-	if [ "$FIREWALL" \> "0" ] ; then
+	{
 		iptables -D INPUT -j VPL_IN
 		iptables -F VPL_IN
 		iptables -X VPL_IN
@@ -277,7 +277,7 @@ unset_firewall() {
 		iptables -X VPL_OUT
 		iptables -F VPL_LOG
 		iptables -X VPL_LOG
-	fi
+	} &> /dev/null
 }
 
 start_vpl() {
